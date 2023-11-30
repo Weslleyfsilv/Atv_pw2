@@ -1,20 +1,22 @@
-const sequelize = require("sequelize");
+const Sequelize = require("sequelize");
 
-const connection = require("../database");
+const connection = require("../database/database");
 
-const Categoria = sequelize.define('Categoria', {
+const Categoria = connection.define(
+  'tbl_categoria', 
+  {
     codigo_categoria: {
-      type: DataTypes.INTEGER.UNSIGNED,
+      type: Sequelize.INTEGER,
       autoIncrement: true,
       primaryKey: true,
     },
     nome_categoria: {
-      type: DataTypes.STRING(255),
+      type: Sequelize.STRING(255),
       allowNull: false,
     },
     observacoes_categoria: {
-      type: DataTypes.TEXT,
-      allowNull: false,
+      type: Sequelize.TEXT,
+      allowNull: true,
     },
   });
   

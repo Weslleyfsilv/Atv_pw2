@@ -1,31 +1,49 @@
-const sequelize = require("sequelize");
+const Sequelize = require("sequelize");
 
-const connection = require("../database");
+const connection = require("../database/database");
 
-const Produto = sequelize.define('Produto', {
+const Categoria = require('./Categoria');
+
+const Produto = connection.define(
+  'tbl_produto', 
+  {
     codigo_produto: {
-      type: DataTypes.INTEGER.UNSIGNED,
+      type: Sequelize.INTEGER,
       autoIncrement: true,
       primaryKey: true,
     },
     nome_produto: {
-      type: DataTypes.STRING(255),
+      type: Sequelize.STRING(255),
       allowNull: false,
     },
     valor_produto: {
-      type: DataTypes.DECIMAL(10, 2),
+      type: Sequelize.STRING,
       allowNull: false,
     },
     imagem_produto: {
-      type: DataTypes.STRING(500),
+      type: Sequelize.STRING(500),
       allowNull: false,
     },
+    imagem_url:{
+      type: Sequelize.STRING,
+      allowNull: false
+  },
     descricao_produto: {
-      type: DataTypes.TEXT,
+      type: Sequelize.TEXT,
       allowNull: false,
     },
   });
   
-  Categoria.sync({force:false});
+  Categoria.hasMany(Produto, {
+    foreignKey: 'codigo_categoria',
+    sourceKey: 'codigo_categoria'
+});
+
+Produto.belongsTo(Categoria, {
+    foreignKey: 'codigo_categoria',
+    sourceKey: 'codigo_categoria'
+});
+
+Produto.sync({force:false});
   
-  module.exports = Produto;
+module.exports = Produto;

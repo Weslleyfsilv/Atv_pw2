@@ -14,8 +14,17 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome_categoria\": \"TESTE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://localhost:3000/categoria/cadastarCategoria",
+							"raw": "http://localhost:3000/categoria/cadastrarCategoria",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -23,7 +32,7 @@
 							"port": "3000",
 							"path": [
 								"categoria",
-								"cadastarCategoria"
+								"cadastrarCategoria"
 							]
 						}
 					},
@@ -31,9 +40,21 @@
 				},
 				{
 					"name": "Listar",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome_categoria\": \"ELETRONICOS\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost:3000/categoria/listarCategoria",
 							"protocol": "http",
@@ -54,6 +75,15 @@
 					"request": {
 						"method": "PUT",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"codigo_categoria\": 3,\r\n    \"nome_categoria\": \"ELETRONICOS\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost:3000/categoria/alterarCategoria",
 							"protocol": "http",
@@ -75,7 +105,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/categoria/excluirCategoria",
+							"raw": "http://localhost:3000/categoria/excluirCategoria/3",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -83,7 +113,8 @@
 							"port": "3000",
 							"path": [
 								"categoria",
-								"excluirCategoria"
+								"excluirCategoria",
+								"3"
 							]
 						}
 					},
@@ -99,6 +130,36 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/wesll/Downloads/compass-8324516_640.jpg"
+								},
+								{
+									"key": "nome_produto",
+									"value": "Produto teste",
+									"type": "text"
+								},
+								{
+									"key": "valor_produto",
+									"value": "1400",
+									"type": "text"
+								},
+								{
+									"key": "descricao_produto",
+									"value": "Produto de teste",
+									"type": "text"
+								},
+								{
+									"key": "codigo_categoria",
+									"value": "4",
+									"type": "text"
+								}
+							]
+						},
 						"url": {
 							"raw": "http://localhost:3000/produto/cadastrarProduto",
 							"protocol": "http",
@@ -135,32 +196,12 @@
 					"response": []
 				},
 				{
-					"name": "Alterar",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3000/produto/alterarProtuto",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"produto",
-								"alterarProtuto"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Excluir",
 					"request": {
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/produto/excluirProduto",
+							"raw": "http://localhost:3000/produto/excluirProduto/4",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -168,7 +209,8 @@
 							"port": "3000",
 							"path": [
 								"produto",
-								"excluirProduto"
+								"excluirProduto",
+								"4"
 							]
 						}
 					},

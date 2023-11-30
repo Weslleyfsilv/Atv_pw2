@@ -1,17 +1,20 @@
-//importando um módulo do express:
-const express = require('express');
+const express = require("express");
 
 const app = express();
 
 app.use(express.json());
 
-const connection = require("./database/database");
-console.log(connection);
+app.use(express.urlencoded({extended:true}));
 
-const CategoriaController = require("./Controller/CategoriaController");
-app.use("/", CategoriaController);
+const cateoriaModel = require('./Model/Categoria');
+const livroModel = require('./Model/Produto')
+
+const categoriaController = require("./Controller/Categoria");
+app.use("/", categoriaController);
+
+const produtoController = require("./Controller/Produto");
+app.use("/", produtoController);
 
 app.listen(3000, ()=>{
-    console.group('SERVIDOR RODANDO!')
+    console.log('SERVIDOR RODANDO!')
 });
-
